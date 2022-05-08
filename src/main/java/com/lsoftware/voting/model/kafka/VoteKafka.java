@@ -17,10 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VoteKafka {
-	
-
-	/** The id. */
-	private String id;
 
 
 	/** The document. */
