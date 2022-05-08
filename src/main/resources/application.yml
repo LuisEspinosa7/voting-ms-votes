@@ -7,6 +7,12 @@ spring:
         mongodb:
           uri: ${MONGODB_URI}
           database: ${MONGODB_DATABASE}
+    kafka:
+      producer:
+        bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        
 
 logging:
   level:
