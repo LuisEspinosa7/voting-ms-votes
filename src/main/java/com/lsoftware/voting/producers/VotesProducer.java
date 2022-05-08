@@ -12,7 +12,7 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import com.lsoftware.voting.model.Vote;
+import com.lsoftware.voting.model.kafka.VoteKafka;
 
 
 /**
@@ -47,7 +47,7 @@ public final class VotesProducer {
 	 *
 	 * @param message the message
 	 */
-	public void sendMessage(Vote vote) {
+	public void sendMessage(VoteKafka vote) {
 		ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(VOTES_TOPIC, vote);
 
 		// This will check producer result asynchronously to avoid thread blocking

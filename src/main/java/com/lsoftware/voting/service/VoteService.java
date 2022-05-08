@@ -17,6 +17,7 @@ import com.lsoftware.voting.dto.VoteCreationDTO;
 import com.lsoftware.voting.exception.ExceptionValueNotPermitted;
 import com.lsoftware.voting.model.Vote;
 import com.lsoftware.voting.model.Voter;
+import com.lsoftware.voting.model.kafka.VoteKafka;
 import com.lsoftware.voting.producers.VotesProducer;
 import com.lsoftware.voting.repository.VoteRepository;
 import com.lsoftware.voting.repository.VoterRepository;
@@ -87,7 +88,7 @@ public class VoteService implements ServiceCreationMethods<VoteCreationDTO> {
 				
 		Vote saved = voteRepository.insert(vote);
 		LOG.info("Sending message with {} to kafka", saved);
-		votesProducer.sendMessage(vote);
+		votesProducer.sendMessage(modelMapper.map(saved, VoteKafka.class));
 		return modelMapper.map(saved, VoteCreationDTO.class);
 	}
 	
