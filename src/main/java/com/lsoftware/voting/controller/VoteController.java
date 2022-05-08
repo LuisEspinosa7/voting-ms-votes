@@ -63,7 +63,7 @@ public class VoteController {
 		LOG.info("method: create");
 
 		VoteCreationDTO vote = voteService.add(voteCreationDTO);
-		ApiCustomResponse response = new ApiCustomResponse.ApiResponseBuilder(200).message("Voted created")
+		ApiCustomResponse response = new ApiCustomResponse.ApiResponseBuilder(200).message("Vote created")
 				.data(vote).build();
 
 		return ResponseEntity.ok(response);

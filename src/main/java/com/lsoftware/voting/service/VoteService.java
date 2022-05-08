@@ -5,6 +5,8 @@
 package com.lsoftware.voting.service;
 
 import java.util.Optional;
+import java.util.UUID;
+
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,8 +78,9 @@ public class VoteService implements ServiceCreationMethods<VoteCreationDTO> {
 		if (searchedVote.isPresent()) throw new ExceptionValueNotPermitted("The voter already voted");
 		
 		Vote vote = modelMapper.map(obj, Vote.class);
+		vote.setId(UUID.randomUUID().toString());
 				
-		Vote saved = voteRepository.save(vote);
+		Vote saved = voteRepository.insert(vote);
 		return modelMapper.map(saved, VoteCreationDTO.class);
 	}
 	
