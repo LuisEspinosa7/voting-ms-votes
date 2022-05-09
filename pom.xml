@@ -110,6 +110,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>voting-votes</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
